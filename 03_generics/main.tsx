@@ -192,7 +192,11 @@ const pathField = <T extends object, U extends keyof T, V extends T[U]>(
   obj: T,
   field: U,
   val: V
-) => {};
+): T => {
+  const copyObj = { ...obj };
+  copyObj[field] = val;
+  return copyObj;
+};
 pathField({ name: "Dzmitry" }, "name", "Alex");
 
 /**********************************************************************/
